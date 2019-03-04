@@ -1,0 +1,6 @@
+framework module XPYNetworkingLib {
+  umbrella header "XPYNetworkingLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_XPYNetworkingLib_Example {
+  umbrella header "Pods-XPYNetworkingLib_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

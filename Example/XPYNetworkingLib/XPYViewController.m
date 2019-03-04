@@ -7,6 +7,7 @@
 //
 
 #import "XPYViewController.h"
+#import <XPYNetworkingHelper.h>
 
 @interface XPYViewController ()
 
