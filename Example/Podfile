@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'XPYNetworkingLib_Example' do
+  pod 'XPYNetworkingLib', :path => '../'
+
+  target 'XPYNetworkingLib_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
