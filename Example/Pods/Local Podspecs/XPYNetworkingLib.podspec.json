@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "网络请求工具",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/xiangxiaopenyou",
+  "homepage": "https://github.com/xiangxiaopenyou/XPYNetworkingLib",
   "license": {
     "type": "MIT",
     "file": "LICENSE"

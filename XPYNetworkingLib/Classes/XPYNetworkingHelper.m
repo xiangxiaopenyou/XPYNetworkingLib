@@ -154,6 +154,68 @@ static BOOL const isLog = NO;
     return sessionTask;
 }
 
+#pragma mark - 上传文件
+- (NSURLSessionTask *)uploadFileWithURL:(NSString *)URLString
+                             parameters:(id)parameters
+                                   name:(NSString *)name
+                               filePath:(NSString *)filePath
+                               progress:(XPYHttpProgress)progress
+                                success:(XPYHttpRequestSuccess)success
+                                failure:(XPYHttpRequestFailure)failure {
+    NSURLSessionTask *sessionTask = [self.manager POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSError *error = nil;
+        [formData appendPartWithFileURL:[NSURL URLWithString:filePath] name:name error:&error];
+        (failure && error) ? failure(error) : nil;
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            progress ? progress(uploadProgress) : nil;
+        });
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (isLog) {
+            NSLog(@"responseObject = %@", responseObject);
+        }
+        [self.tasksArray removeObject:task];
+        success ? success(responseObject) : nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (isLog) {
+            NSLog(@"error = %@", error);
+        }
+        [self.tasksArray removeObject:task];
+        failure ? failure(error) : nil;
+    }];
+    return sessionTask;
+}
+
+#pragma mark - 文件下载
+- (NSURLSessionTask *)downloadFileWithURL:(NSString *)URLString
+                            fileDirectory:(NSString *)fileDirectory
+                                 progress:(XPYHttpProgress)progress
+                                  success:(XPYHttpRequestSuccess)success
+                                  failure:(XPYHttpRequestFailure)failure {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+    __block NSURLSessionDownloadTask *downloadTask = [self.manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            progress ? progress(downloadProgress) : nil;
+        });
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        NSString *directoryPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:fileDirectory ? fileDirectory : nil];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:nil];
+        NSString *filePath = [directoryPath stringByAppendingPathComponent:response.suggestedFilename];
+        return [NSURL fileURLWithPath:filePath];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        [self.tasksArray removeObject:downloadTask];
+        if (failure && error) {
+            failure(error);
+            return;
+        }
+        success ? success(filePath.absoluteString) : nil;
+    }];
+    [downloadTask resume];
+    downloadTask ? [self.tasksArray addObject:downloadTask] : nil;
+    return downloadTask;
+}
+
 #pragma mark - Getters
 - (NSMutableArray *)tasksArray {
     if (!_tasksArray) {

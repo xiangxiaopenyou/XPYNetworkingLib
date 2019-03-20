@@ -19,6 +19,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+//    NSString *urlString = @"";
+//    [[XPYNetworkingHelper sharedInstance] GET:urlString parameters:nil success:^(id responseObject) {
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
 }
 
 - (void)didReceiveMemoryWarning
