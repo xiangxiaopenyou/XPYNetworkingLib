@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - XPYNetworkingLib (0.1.0):
+  - XPYNetworkingLib (0.1.1):
     - AFNetworking
 
 DEPENDENCIES:
@@ -30,7 +30,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  XPYNetworkingLib: 5d0d4924901cbfdb7efc1614bb57b50651d0fe36
+  XPYNetworkingLib: 82c1c936e66300fb76ed8ea274fa531e24208204
 
 PODFILE CHECKSUM: bc92ee11f68a2a41fea3575dcbad129d46cb3e89
 
