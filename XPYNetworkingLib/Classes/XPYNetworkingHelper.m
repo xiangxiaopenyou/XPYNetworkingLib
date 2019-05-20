@@ -16,6 +16,11 @@ static BOOL const isLog = YES;
 static BOOL const isLog = NO;
 #endif
 
+@interface XPYNetworkingHelper ()
+@property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic, strong) NSMutableArray *tasksArray;
+@end
+
 @implementation XPYNetworkingHelper
 /**
  开始监测网络状态
@@ -23,6 +28,7 @@ static BOOL const isLog = NO;
 + (void)load {
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
+
 + (void)networkStatusWithBlock:(XPYNetworkStatusHandler)networkStatus {
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
@@ -215,6 +221,17 @@ static BOOL const isLog = NO;
     downloadTask ? [self.tasksArray addObject:downloadTask] : nil;
     return downloadTask;
 }
+
+- (void)resetRequestSerializer:(XPYRequestSerializer)requestSerializer {
+    self.manager.requestSerializer = requestSerializer == XPYRequestSerializerHTTP ? [AFHTTPRequestSerializer serializer] : [AFJSONRequestSerializer serializer];
+}
+- (void)resetResponseSerializer:(XPYResponseSerializer)responseSerializer {
+    self.manager.responseSerializer = responseSerializer == XPYResponseSerializerHTTP ? [AFHTTPResponseSerializer serializer] : [AFJSONResponseSerializer serializer];
+}
+- (void)resetRequestTimeoutInterval:(NSInteger)timeoutInterval {
+    self.manager.requestSerializer.timeoutInterval = timeoutInterval;
+}
+
 
 #pragma mark - Getters
 - (NSMutableArray *)tasksArray {

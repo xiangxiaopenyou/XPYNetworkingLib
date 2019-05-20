@@ -13,6 +13,14 @@ typedef NS_ENUM(NSUInteger, XPYNetworkStatus) {
     XPYNetworkStatusReachableWWAN,  //手机网络
     XPYNetworkStatusReachableWiFi   //wifi网络
 };
+typedef NS_ENUM(NSInteger, XPYRequestSerializer) {
+    XPYRequestSerializerHTTP,
+    XPYRequestSerializerJSON
+};
+typedef NS_ENUM(NSInteger, XPYResponseSerializer) {
+    XPYResponseSerializerHTTP,
+    XPYResponseSerializerJSON
+};
 
 //请求成功block
 typedef void (^XPYHttpRequestSuccess)(id responseObject);
@@ -25,11 +33,7 @@ typedef void (^XPYHttpProgress)(NSProgress *progress);
 //网络状态block
 typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
 
-@class AFHTTPSessionManager;
 @interface XPYNetworkingHelper : NSObject
-
-@property (nonatomic, strong) AFHTTPSessionManager *manager;
-@property (nonatomic, strong) NSMutableArray *tasksArray;
 
 + (instancetype)sharedInstance;
 
@@ -107,6 +111,31 @@ typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
                                  progress:(XPYHttpProgress)progress
                                   success:(XPYHttpRequestSuccess)success
                                   failure:(XPYHttpRequestFailure)failure;
+
+#pragma mark - Properties
+
+/**
+ 请求格式
+
+ @param requestSerializer HTTP或者JSON格式
+ */
+- (void)resetRequestSerializer:(XPYRequestSerializer)requestSerializer;
+
+
+/**
+ 响应数据格式
+
+ @param responseSerializer HTTP或者JSON格式（默认JSON）
+ */
+- (void)resetResponseSerializer:(XPYResponseSerializer)responseSerializer;
+
+
+/**
+ 请求超时时间
+
+ @param timeoutInterval 时间
+ */
+- (void)resetRequestTimeoutInterval:(NSInteger)timeoutInterval;
 
 
 @end
