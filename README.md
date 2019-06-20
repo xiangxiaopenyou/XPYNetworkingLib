@@ -23,65 +23,64 @@ pod 'XPYNetworkingLib'
 
 1.GET Request
 
-[[XPYNetworkingHelper sharedInstance] GET:@"" parameters:params success:^(id responseObject) {
+      [[XPYNetworkingHelper sharedInstance] GET:@"" parameters:params success:^(id responseObject) {
 
-      <#code#>
+            <#code#>
       
-    } failure:^(NSError *error) {
+      } failure:^(NSError *error) {
     
-      <#code#>
+            <#code#>
       
-    }];
+      }];
 
 2.POST Request
 
-[[XPYNetworkingHelper sharedInstance] POST:@"" parameters:nil success:^(id responseObject) {
+      [[XPYNetworkingHelper sharedInstance] POST:@"" parameters:nil success:^(id responseObject) {
 
-        <#code#>
+            <#code#>
         
-    } failure:^(NSError *error) {
+      } failure:^(NSError *error) {
     
-        <#code#>
+            <#code#>
         
-    }];
+      }];
     
 3.Monitor Network
 
-[XPYNetworkingHelper networkStatusWithBlock:^(XPYNetworkStatus status) {
+      [XPYNetworkingHelper networkStatusWithBlock:^(XPYNetworkStatus status) {
 
-        switch (status) {
+            switch (status) {
         
-            case XPYNetworkStatusUnknown:
+                  case XPYNetworkStatusUnknown:
             
-                <#code#>
+                        <#code#>
                 
-                break;
+                  break;
                 
-            case XPYNetworkStatusUnreachable:
+                  case XPYNetworkStatusUnreachable:
             
-                <#code#>
+                        <#code#>
                 
-                break;
+                  break;
                 
-            case XPYNetworkStatusReachableWWAN:
+                  case XPYNetworkStatusReachableWWAN:
             
-                <#code#>
+                        <#code#>
                 
-                break;
+                  break;
                 
-            case XPYNetworkStatusReachableWiFi:
+                  case XPYNetworkStatusReachableWiFi:
             
-                <#code#>
+                        <#code#>
                 
-                break;
+                  break;
                 
-            default:
-            
-                break;
+                  default:
+                        <#code#>
+                  break;
                 
-        }
-        
-    }];
+            }
+        }];
  
 
 ## Author
