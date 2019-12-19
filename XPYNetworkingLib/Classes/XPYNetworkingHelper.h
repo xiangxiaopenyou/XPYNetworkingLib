@@ -28,6 +28,7 @@ typedef void (^XPYHttpRequestSuccess)(id responseObject);
 //请求失败block
 typedef void (^XPYHttpRequestFailure)(NSError *error);
 
+//请求进度block
 typedef void (^XPYHttpProgress)(NSProgress *progress);
 
 //网络状态block

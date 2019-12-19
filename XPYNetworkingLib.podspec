@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'XPYNetworkingLib'
-  s.version          = '0.1.2'
+  s.version          = '1.0.0'
   s.summary          = '网络请求工具'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/xiangxiaopenyou/XPYNetworkingLib'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'xiangxiaopenyou' => '1259653875@qq.com' }
+  s.author           = { 'xiangxiaopenyou' => 'xlp921123@163.com' }
   s.source           = { :git => 'https://github.com/xiangxiaopenyou/XPYNetworkingLib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
