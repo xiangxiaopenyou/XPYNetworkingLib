@@ -14,14 +14,14 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - XPYNetworkingLib (0.1.1):
+  - XPYNetworkingLib (1.0.0):
     - AFNetworking
 
 DEPENDENCIES:
   - XPYNetworkingLib (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
 
 EXTERNAL SOURCES:
@@ -30,8 +30,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  XPYNetworkingLib: 82c1c936e66300fb76ed8ea274fa531e24208204
+  XPYNetworkingLib: 17e9b619d50422d348366ef1f86f985e869cc555
 
 PODFILE CHECKSUM: bc92ee11f68a2a41fea3575dcbad129d46cb3e89
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.8.4

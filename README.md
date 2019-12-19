@@ -24,25 +24,17 @@ pod 'XPYNetworkingLib'
 1.GET Request
 
       [[XPYNetworkingHelper sharedInstance] GET:@"" parameters:params success:^(id responseObject) {
-
-            <#code#>
       
       } failure:^(NSError *error) {
     
-            <#code#>
-      
       }];
 
 2.POST Request
 
       [[XPYNetworkingHelper sharedInstance] POST:@"" parameters:nil success:^(id responseObject) {
-
-            <#code#>
-        
+      
       } failure:^(NSError *error) {
     
-            <#code#>
-        
       }];
     
 3.Monitor Network
@@ -53,30 +45,23 @@ pod 'XPYNetworkingLib'
         
                   case XPYNetworkStatusUnknown:
             
-                        <#code#>
-                
                   break;
                 
                   case XPYNetworkStatusUnreachable:
             
-                        <#code#>
-                
                   break;
                 
                   case XPYNetworkStatusReachableWWAN:
             
-                        <#code#>
-                
                   break;
                 
                   case XPYNetworkStatusReachableWiFi:
             
-                        <#code#>
                 
                   break;
                 
                   default:
-                        <#code#>
+                        
                   break;
                 
             }
