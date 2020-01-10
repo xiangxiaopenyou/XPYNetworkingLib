@@ -44,22 +44,27 @@ pod 'XPYNetworkingLib'
           switch (status) {
           
               case XPYNetworkStatusUnknown: {
+              
               }
                   break;
                   
               case XPYNetworkStatusUnreachable: {
+              
               }
                   break;
                   
               case XPYNetworkStatusReachableWWAN: {
+              
               }
                   break;
                   
               case XPYNetworkStatusReachableWiFi: {
+              
               }
                   break;
                   
               default:
+              
                   break;
                   
           }
