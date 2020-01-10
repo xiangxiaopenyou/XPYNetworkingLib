@@ -13,38 +13,30 @@ typedef NS_ENUM(NSUInteger, XPYNetworkStatus) {
     XPYNetworkStatusReachableWWAN,  //手机网络
     XPYNetworkStatusReachableWiFi   //wifi网络
 };
-typedef NS_ENUM(NSInteger, XPYRequestSerializer) {
-    XPYRequestSerializerHTTP,
-    XPYRequestSerializerJSON
-};
-typedef NS_ENUM(NSInteger, XPYResponseSerializer) {
-    XPYResponseSerializerHTTP,
-    XPYResponseSerializerJSON
-};
 
-//请求成功block
-typedef void (^XPYHttpRequestSuccess)(id responseObject);
-
-//请求失败block
-typedef void (^XPYHttpRequestFailure)(NSError *error);
-
-//请求进度block
-typedef void (^XPYHttpProgress)(NSProgress *progress);
-
-//网络状态block
+/// 网络状态block
 typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
+
+/// 请求成功block
+typedef void (^XPYRequestSuccess)(id responseObject);
+
+/// 请求失败block
+typedef void (^XPYRequestFailure)(NSError *error);
+
+/// 请求进度block
+typedef void (^XPYRequestProgress)(NSProgress *progress);
 
 @interface XPYNetworkingHelper : NSObject
 
 + (instancetype)sharedInstance;
 
-//获取网络状态
-+ (void)networkStatusWithBlock:(XPYNetworkStatusHandler)networkStatus;
+/// 获取网络状态
+- (void)networkStatusWithBlock:(XPYNetworkStatusHandler)networkStatus;
 
-//取消所有http请求
+/// 取消所有http请求
 - (void)cancelAllHttpRequest;
 
-//取消指定URL的http请求
+/// 取消指定URL的http请求
 - (void)cancelHttpRequestWithURL:(NSString *)URLString;
 
 /**
@@ -56,10 +48,10 @@ typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
  @param failure 请求失败回调
  @return 返回Task对象可取消请求
  */
-- (NSURLSessionTask *)GET:(NSString *)URLString
-               parameters:(id)parameters
-                  success:(XPYHttpRequestSuccess)success
-                  failure:(XPYHttpRequestFailure)failure;
+- (NSURLSessionTask *)getWithURL:(NSString *)URLString
+               parameters:(NSDictionary *)parameters
+                  success:(XPYRequestSuccess)success
+                  failure:(XPYRequestFailure)failure;
 
 /**
  POST请求
@@ -70,10 +62,10 @@ typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
  @param failure 请求失败回调
  @return 返回Task对象可调用cancel方法取消请求
  */
-- (NSURLSessionTask *)POST:(NSString *)URLString
-                parameters:(id)parameters
-                   success:(XPYHttpRequestSuccess)success
-                   failure:(XPYHttpRequestFailure)failure;
+- (NSURLSessionTask *)postWithURL:(NSString *)URLString
+                parameters:(NSDictionary *)parameters
+                   success:(XPYRequestSuccess)success
+                   failure:(XPYRequestFailure)failure;
 
 
 /**
@@ -89,12 +81,12 @@ typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
  @return 返回Task对象可调用cancel方法取消
  */
 - (NSURLSessionTask *)uploadFileWithURL:(NSString *)URLString
-                             parameters:(id)parameters
+                             parameters:(NSDictionary *)parameters
                                    name:(NSString *)name
                                filePath:(NSString *)filePath
-                               progress:(XPYHttpProgress)progress
-                                success:(XPYHttpRequestSuccess)success
-                                failure:(XPYHttpRequestFailure)failure;
+                               progress:(XPYRequestProgress)progress
+                                success:(XPYRequestSuccess)success
+                                failure:(XPYRequestFailure)failure;
 
 
 /**
@@ -109,34 +101,21 @@ typedef void (^XPYNetworkStatusHandler)(XPYNetworkStatus status);
  */
 - (NSURLSessionTask *)downloadFileWithURL:(NSString *)URLString
                             fileDirectory:(NSString *)fileDirectory
-                                 progress:(XPYHttpProgress)progress
-                                  success:(XPYHttpRequestSuccess)success
-                                  failure:(XPYHttpRequestFailure)failure;
+                                 progress:(XPYRequestProgress)progress
+                                  success:(XPYRequestSuccess)success
+                                  failure:(XPYRequestFailure)failure;
 
 #pragma mark - Properties
+/// 请求超时时间
+@property (nonatomic, assign) NSTimeInterval timeoutInterval;
 
-/**
- 请求格式
+/// 响应数据接收类型
+@property (nonatomic, strong) NSSet *responseAcceptableContentTypes;
 
- @param requestSerializer HTTP或者JSON格式
- */
-- (void)resetRequestSerializer:(XPYRequestSerializer)requestSerializer;
+/// 状态栏ActivityIndicator是否开启 YES开启 NO关闭
+@property (nonatomic, assign) BOOL networkActivityIndicatorEnable;
 
-
-/**
- 响应数据格式
-
- @param responseSerializer HTTP或者JSON格式（默认JSON）
- */
-- (void)resetResponseSerializer:(XPYResponseSerializer)responseSerializer;
-
-
-/**
- 请求超时时间
-
- @param timeoutInterval 时间
- */
-- (void)resetRequestTimeoutInterval:(NSInteger)timeoutInterval;
-
+/// 是否打印失败、成功、进度log，默认NO
+@property (nonatomic, assign) BOOL logEnable;
 
 @end

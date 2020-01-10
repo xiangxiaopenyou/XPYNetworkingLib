@@ -18,27 +18,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-//    NSString *urlString = @"http://testapp.zhangdu.com/v1/book-city?action=db-home&channel_id=u2000&client_type=2&device_token=54A26B87-4B33-468B-99D3-1A8651B6CD81&page=1&token=0&user_id=0&version=1.4.0";
-//    [[XPYNetworkingHelper sharedInstance] GET:urlString parameters:nil success:^(id responseObject) {
-//
-//    } failure:^(NSError *error) {
-//
-//    }];
-    [XPYNetworkingHelper networkStatusWithBlock:^(XPYNetworkStatus status) {
+    
+    NSString *urlString = @"http://testapp.zhangdu.com/v1/book-city?action=db-home&channel_id=u2000&client_type=2&device_token=54A26B87-4B33-468B-99D3-1A8651B6CD81&page=1&token=0&user_id=0&version=1.4.0";
+    [[XPYNetworkingHelper sharedInstance] getWithURL:urlString parameters:nil success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+    [[XPYNetworkingHelper sharedInstance] networkStatusWithBlock:^(XPYNetworkStatus status) {
         switch (status) {
-            case XPYNetworkStatusUnknown:
+            case XPYNetworkStatusUnknown: {
+                
+            }
                 break;
-            case XPYNetworkStatusUnreachable:
+            case XPYNetworkStatusUnreachable: {
+                
+            }
                 break;
-            case XPYNetworkStatusReachableWWAN:
+            case XPYNetworkStatusReachableWWAN: {
+                
+            }
                 break;
-            case XPYNetworkStatusReachableWiFi:
+            case XPYNetworkStatusReachableWiFi: {
+                
+            }
                 break;
             default:
                 break;
         }
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning

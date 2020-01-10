@@ -23,7 +23,7 @@ pod 'XPYNetworkingLib'
 
 1.GET Request
 
-      [[XPYNetworkingHelper sharedInstance] GET:@"" parameters:params success:^(id responseObject) {
+      [[XPYNetworkingHelper sharedInstance] getWithURL:@"" parameters:params success:^(id responseObject) {
       
       } failure:^(NSError *error) {
     
@@ -31,7 +31,7 @@ pod 'XPYNetworkingLib'
 
 2.POST Request
 
-      [[XPYNetworkingHelper sharedInstance] POST:@"" parameters:nil success:^(id responseObject) {
+      [[XPYNetworkingHelper sharedInstance] postWithURL:@"" parameters:nil success:^(id responseObject) {
       
       } failure:^(NSError *error) {
     
@@ -39,38 +39,37 @@ pod 'XPYNetworkingLib'
     
 3.Monitor Network
 
-      [XPYNetworkingHelper networkStatusWithBlock:^(XPYNetworkStatus status) {
-
-            switch (status) {
-        
-                  case XPYNetworkStatusUnknown:
-            
+      [[XPYNetworkingHelper sharedInstance] networkStatusWithBlock:^(XPYNetworkStatus status) {
+      
+          switch (status) {
+          
+              case XPYNetworkStatusUnknown: {
+              }
                   break;
-                
-                  case XPYNetworkStatusUnreachable:
-            
+                  
+              case XPYNetworkStatusUnreachable: {
+              }
                   break;
-                
-                  case XPYNetworkStatusReachableWWAN:
-            
+                  
+              case XPYNetworkStatusReachableWWAN: {
+              }
                   break;
-                
-                  case XPYNetworkStatusReachableWiFi:
-            
-                
+                  
+              case XPYNetworkStatusReachableWiFi: {
+              }
                   break;
-                
-                  default:
-                        
+                  
+              default:
                   break;
-                
-            }
-        }];
+                  
+          }
+          
+      }];
  
 
 ## Author
 
-xiangxiaopenyou, 1259653875@qq.com
+xiangxiaopenyou, xlp921123@163.com
 
 ## License
 
