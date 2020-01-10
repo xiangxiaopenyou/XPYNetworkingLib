@@ -17,7 +17,7 @@ XPYNetworkingLib is available through [CocoaPods](https://cocoapods.org). To ins
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'XPYNetworkingLib'
+pod 'XPYNetworkingLib', :git => 'https://github.com/xiangxiaopenyou/XPYNetworkingLib.git'
 ```
 ## Usage
 
