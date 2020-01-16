@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'XPYNetworkingLib'
-  s.version          = '1.0.0'
+  s.version          = '2.0.0'
   s.summary          = '网络请求工具'
 
 # This description is used to generate tags and improve search results.
@@ -39,4 +39,5 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'AFNetworking'
+  s.dependency 'CTMediator'
 end

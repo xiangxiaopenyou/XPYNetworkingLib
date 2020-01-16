@@ -22,6 +22,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6CD845B723D0631D000609E9 /* XPYTestAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD845B123D0631D000609E9 /* XPYTestAPIManager.m */; };
+		6CD845B823D0631D000609E9 /* XPYNetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD845B223D0631D000609E9 /* XPYNetworkingService.m */; };
+		6CD845B923D0631D000609E9 /* Target_XPYNetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD845B623D0631D000609E9 /* Target_XPYNetworkingService.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -62,6 +65,12 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6C02D2E5CC1350F11778E652 /* Pods-XPYNetworkingLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XPYNetworkingLib_Tests.debug.xcconfig"; path = "Target Support Files/Pods-XPYNetworkingLib_Tests/Pods-XPYNetworkingLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6CD845B123D0631D000609E9 /* XPYTestAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPYTestAPIManager.m; sourceTree = "<group>"; };
+		6CD845B223D0631D000609E9 /* XPYNetworkingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPYNetworkingService.m; sourceTree = "<group>"; };
+		6CD845B323D0631D000609E9 /* Target_XPYNetworkingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_XPYNetworkingService.h; sourceTree = "<group>"; };
+		6CD845B423D0631D000609E9 /* XPYNetworkingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPYNetworkingService.h; sourceTree = "<group>"; };
+		6CD845B523D0631D000609E9 /* XPYTestAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPYTestAPIManager.h; sourceTree = "<group>"; };
+		6CD845B623D0631D000609E9 /* Target_XPYNetworkingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_XPYNetworkingService.m; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A92285A4C26445FEC1F72C6A /* Pods_XPYNetworkingLib_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XPYNetworkingLib_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +141,7 @@
 		6003F593195388D20070C39A /* Example for XPYNetworkingLib */ = {
 			isa = PBXGroup;
 			children = (
+				6CD845B023D0631D000609E9 /* NetworkingDemo */,
 				6003F59C195388D20070C39A /* XPYAppDelegate.h */,
 				6003F59D195388D20070C39A /* XPYAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -183,6 +193,19 @@
 				33F9D9EA095ABDADC1D9B342 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		6CD845B023D0631D000609E9 /* NetworkingDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6CD845B323D0631D000609E9 /* Target_XPYNetworkingService.h */,
+				6CD845B623D0631D000609E9 /* Target_XPYNetworkingService.m */,
+				6CD845B423D0631D000609E9 /* XPYNetworkingService.h */,
+				6CD845B223D0631D000609E9 /* XPYNetworkingService.m */,
+				6CD845B523D0631D000609E9 /* XPYTestAPIManager.h */,
+				6CD845B123D0631D000609E9 /* XPYTestAPIManager.m */,
+			);
+			path = NetworkingDemo;
 			sourceTree = "<group>";
 		};
 		D61F9DBC04083FB18617E283 /* Pods */ = {
@@ -327,11 +350,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-XPYNetworkingLib_Example/Pods-XPYNetworkingLib_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CTMediator/CTMediator.framework",
 				"${BUILT_PRODUCTS_DIR}/XPYNetworkingLib/XPYNetworkingLib.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTMediator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XPYNetworkingLib.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +393,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD845B723D0631D000609E9 /* XPYTestAPIManager.m in Sources */,
 				6003F59E195388D20070C39A /* XPYAppDelegate.m in Sources */,
+				6CD845B923D0631D000609E9 /* Target_XPYNetworkingService.m in Sources */,
+				6CD845B823D0631D000609E9 /* XPYNetworkingService.m in Sources */,
 				6003F5A7195388D20070C39A /* XPYViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

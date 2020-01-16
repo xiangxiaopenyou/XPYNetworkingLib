@@ -24,6 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## CTMediator
+
+MIT
+
+
 ## XPYNetworkingLib
 
 Copyright (c) 2019 xiangxiaopenyou <1259653875@qq.com>

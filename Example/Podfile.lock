@@ -14,8 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CTMediator (25)
   - XPYNetworkingLib (1.0.0):
     - AFNetworking
+    - CTMediator
 
 DEPENDENCIES:
   - XPYNetworkingLib (from `../`)
@@ -23,6 +25,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - CTMediator
 
 EXTERNAL SOURCES:
   XPYNetworkingLib:
@@ -30,7 +33,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  XPYNetworkingLib: 17e9b619d50422d348366ef1f86f985e869cc555
+  CTMediator: 830c1fc204b3a6abf2a059510c7380f56343da0f
+  XPYNetworkingLib: 7cf763e8c113e5a7421c5e46b18a5bcd1fe16905
 
 PODFILE CHECKSUM: bc92ee11f68a2a41fea3575dcbad129d46cb3e89
 
