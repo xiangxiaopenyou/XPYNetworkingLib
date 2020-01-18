@@ -7,13 +7,18 @@
 //
 
 #import "XPYViewController.h"
+
 #import "XPYTestAPIManager.h"
+#import "XPYLoginAPIManager.h"
+#import "XPYDownloadAPIManager.h"
 
 #import <XPYNetworkingHelper.h>
 
 @interface XPYViewController () <XPYNetworkingAPIResponseDelegate>
 
-@property (nonatomic, strong) XPYTestAPIManager *testAPIManager;
+@property (nonatomic, strong) XPYTestAPIManager *testApiManager;        // get请求
+@property (nonatomic, strong) XPYLoginAPIManager *loginAPIManager;       // post请求
+@property (nonatomic, strong) XPYDownloadAPIManager *downloadAPIManager;    //download请求
 
 @end
 
@@ -56,7 +61,9 @@
 //    }];
     
     // 使用二次封装XPYNetworkingAPIManager（离散型）
-    [self.testAPIManager requestData];
+    [self.testApiManager requestData];
+    [self.loginAPIManager requestData];
+    [self.downloadAPIManager requestData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,14 +79,31 @@
 - (void)networkingAPIResponseDidFail:(XPYNetworkingBaseAPIManager *)manager {
     
 }
+- (void)networkingAPIResponseProgress:(XPYNetworkingBaseAPIManager *)manager {
+    
+}
 
 #pragma mark - Getters
-- (XPYTestAPIManager *)testAPIManager {
-    if (!_testAPIManager) {
-        _testAPIManager = [[XPYTestAPIManager alloc] init];
-        _testAPIManager.responseDelegate = self;
+- (XPYTestAPIManager *)testApiManager {
+    if (!_testApiManager) {
+        _testApiManager = [[XPYTestAPIManager alloc] init];
+        _testApiManager.responseDelegate = self;
     }
-    return _testAPIManager;
+    return _testApiManager;
+}
+- (XPYLoginAPIManager *)loginAPIManager {
+    if (!_loginAPIManager) {
+        _loginAPIManager = [[XPYLoginAPIManager alloc] init];
+        _loginAPIManager.responseDelegate = self;
+    }
+    return _loginAPIManager;
+}
+- (XPYDownloadAPIManager *)downloadAPIManager {
+    if (!_downloadAPIManager) {
+        _downloadAPIManager = [[XPYDownloadAPIManager alloc] init];
+        _downloadAPIManager.responseDelegate = self;
+    }
+    return _downloadAPIManager;
 }
 
 @end

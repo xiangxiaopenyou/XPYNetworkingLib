@@ -8,11 +8,10 @@
 
 #import "XPYNetworkingService.h"
 
-NSString * const XPYNetworkingServiceIdentifier = @"XPYNetworkingService";
-
 /// 示例BaseURL
 #if DEBUG
 static NSString * const kXPYBaseURL = @"http://testapp.zhangdu.com/v1";
+static NSString * const kXPYDownloadURL = @"http://zhangdu-test.oss-cn-shanghai.aliyuncs.com/app/package/voice.zip";
 #else
 static NSString * const kXPYBaseURL = @"";
 #endif
@@ -21,26 +20,31 @@ static NSString * const kXPYBaseURL = @"";
 static NSString * const kXPYChannelId = @"u2000";
 static NSInteger const kXPYClientType = 2;
 static NSString * const kXPYDeviceToken = @"54A26B87-4B33-468B-99D3-1A8651B6CD81";
-static NSString * const kXPYUserId = @"0";
-static NSString * const kXPYUserToken = @"0";
 static NSString * const kXPYVersion = @"1.4.0";
 
 @implementation XPYNetworkingService
 
 /// 拼接kXPYBaseURL和methodName
-- (NSString *)requestURLStringWithMethod:(NSString *)methodName {
-    return [kXPYBaseURL stringByAppendingPathComponent:methodName];
+- (NSString *)requestURLStringWithMethod:(NSString *)methodName requestType:(XPYNetworkingRequestType)type {
+    if (type == XPYNetworkingRequestTypeDownloadFile) {
+        return kXPYDownloadURL;
+    }
+    return methodName ? [kXPYBaseURL stringByAppendingPathComponent:methodName] : kXPYBaseURL;
 }
 
-/// 可以拼接额外参数，比如userID、token
+/// 可以拼接额外参数，比如UserID、Token
 /// 这里的例子拼接channel_id、client_type、device_token、token、user_id、version
 - (NSDictionary *)completedParametersWithParams:(NSDictionary *)params {
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:params];
     [temp setObject:kXPYChannelId forKey:@"channel_id"];
     [temp setObject:@(kXPYClientType) forKey:@"client_type"];
     [temp setObject:kXPYDeviceToken forKey:@"device_token"];
-    [temp setObject:kXPYUserId forKey:@"user_id"];
-    [temp setObject:kXPYUserToken forKey:@"token"];
+    // 先判断是否保存了UserId和Token(根据需求自由发挥)
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"XPYUserId"]) {
+        [temp setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"XPYUserId"] forKey:@"user_id"];
+        [temp setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"XPYUserToken"]  forKey:@"token"];
+    }
+
     [temp setObject:kXPYVersion forKey:@"version"];
     return (NSDictionary *)[temp copy];
 }
@@ -60,6 +64,9 @@ static NSString * const kXPYVersion = @"1.4.0";
         return error;
     }
 }
+
+
+
 
 
 @end

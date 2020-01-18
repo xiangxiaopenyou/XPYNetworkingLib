@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, XPYNetworkingRequestType) {
 
 /// 获取完整请求链接（为了拼接baseURL和接口方法名）
 /// @param methodName 接口方法名
-- (NSString *)requestURLStringWithMethod:(NSString *)methodName;
+- (NSString *)requestURLStringWithMethod:(NSString *)methodName requestType:(XPYNetworkingRequestType)type;
 
 /// 获取完整的请求参数（为了拼接统一参数，如UserID、Token）
 /// @param params 参数

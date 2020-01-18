@@ -40,8 +40,9 @@
 #pragma mark - Instance methods
 - (void)requestData {
     id <XPYNetworkingServiceProtocol> service = [[XPYNetworkingServiceFactory sharedInstance] networkingServiceWithIdentifier:[self.child serviceIdentifier]];
-    NSString *requestURLString = [service requestURLStringWithMethod:[self.child methodName]];
-    NSDictionary *params = [service completedParametersWithParams:[self.child requestParams]];
+    NSString *requestURLString = [service requestURLStringWithMethod:[self.child methodName] requestType:[self.child requestType]];
+    NSDictionary *params = [self.child respondsToSelector:@selector(requestParams)] ? [self.child requestParams] : nil;
+    params = [service completedParametersWithParams:params];
     switch ([self.child requestType]) {
         case XPYNetworkingRequestTypeGet: {
             [[XPYNetworkingHelper sharedInstance] getWithURL:requestURLString parameters:params success:^(id responseObject) {

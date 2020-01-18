@@ -7,7 +7,6 @@
 //
 
 #import "XPYTestAPIManager.h"
-#import "XPYNetworkingService.h"
 
 @implementation XPYTestAPIManager
 
@@ -24,7 +23,8 @@
 }
 
 - (NSString *)serviceIdentifier {
-    return XPYNetworkingServiceIdentifier;
+    // 根据CTMediator的命名规则
+    return @"XPYNetworkingService";
 }
 - (BOOL)logEnable {
     return YES;

@@ -220,6 +220,9 @@
     }
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
     __block NSURLSessionDownloadTask *downloadTask = [self.manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        if (self.logEnable) {
+            NSLog(@"progress = %@", downloadProgress);
+        }
         dispatch_sync(dispatch_get_main_queue(), ^{
             progress ? progress(downloadProgress) : nil;
         });
@@ -228,6 +231,9 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:nil];
         NSString *filePath = [directoryPath stringByAppendingPathComponent:response.suggestedFilename];
+        if (self.logEnable) {
+            NSLog(@"destinationPath = %@", filePath);
+        }
         return [NSURL fileURLWithPath:filePath];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         [self.tasksArray removeObject:downloadTask];

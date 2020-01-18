@@ -11,8 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const XPYNetworkingServiceIdentifier;
-
 @interface XPYNetworkingService : NSObject <XPYNetworkingServiceProtocol>
 
 @end
