@@ -42,7 +42,7 @@ pod 'XPYNetworkingLib', :git => 'https://github.com/xiangxiaopenyou/XPYNetworkin
 
 二、2.0.0增加离散型请求方式
 
-每一个一个请求必须是XPYNetworkingBaseAPIManager的子类，子类必须实现XPYNetworkingAPIManagerProtocol协议，目的是将methodName（API方法名）、requestType（请求类型）、requestParams（请求参数）等封装在子类中，我们调用请求时只需要调用requestData()方法。结果获取需要实现XPYNetworkingAPIResponseDelegate协议。
+每一个请求必须是XPYNetworkingBaseAPIManager的子类，子类必须实现XPYNetworkingAPIManagerProtocol协议，目的是将methodName（API方法名）、requestType（请求类型）、requestParams（请求参数）等封装在子类中，我们调用请求时只需要调用requestData()方法。结果获取需要实现XPYNetworkingAPIResponseDelegate协议。
 注意：XPYNetworkingService类实现了XPYNetworkingServiceProtocol协议，目的是统一拼接BaseURL和API方法名，统一处理额外添加的请求参数，如UserId、Token，以及统一解析请求成功结果。因为该类被独立拿出来了，所以这里使用CTMediator库的performTarget来获取服务。该类可以自由发挥。
 
     @property (nonatomic, strong) XPYTestAPIManager *testApiManager;        // get请求
