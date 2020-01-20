@@ -206,12 +206,12 @@
 			children = (
 				6CD845C723D304D4000609E9 /* Target_XPYNetworkingService.h */,
 				6CD845CA23D304D4000609E9 /* Target_XPYNetworkingService.m */,
+				6CD845C823D304D4000609E9 /* XPYNetworkingService.h */,
+				6CD845CB23D304D5000609E9 /* XPYNetworkingService.m */,
 				6CD845C623D304D4000609E9 /* XPYDownloadAPIManager.h */,
 				6CD845CF23D304D5000609E9 /* XPYDownloadAPIManager.m */,
 				6CD845C923D304D4000609E9 /* XPYLoginAPIManager.h */,
 				6CD845CD23D304D5000609E9 /* XPYLoginAPIManager.m */,
-				6CD845C823D304D4000609E9 /* XPYNetworkingService.h */,
-				6CD845CB23D304D5000609E9 /* XPYNetworkingService.m */,
 				6CD845CC23D304D5000609E9 /* XPYTestAPIManager.h */,
 				6CD845CE23D304D5000609E9 /* XPYTestAPIManager.m */,
 			);
